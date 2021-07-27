@@ -1,0 +1,40 @@
+{
+    "name": "vite-plugin-copy",
+    "version": "0.1.0",
+    "description": "Vitejs plguin: copy files and folders",
+    "author": "goosy <goosy.jo@gmail.com>",
+    "type": "module",
+    "main": "dist/vite-plugin-copy.cjs",
+    "module": "dist/vite-plugin-copy.js",
+    "exports": {
+        ".": "./dist/vite-plugin-copy.js",
+        "./cjs": "./dist/vite-plugin-copy.cjs"
+    },
+    "engines": {
+        "node": ">=14.8.0"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "globby": "^12.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4"
+    },
+    "scripts": {
+        "build": "rollup -c",
+        "prepublish": "npm run build",
+        "test": "mocha"
+    },
+    "keywords": [
+        "vite",
+        "vite-plugin",
+        "copy",
+        "asset",
+        "assets",
+        "file",
+        "files",
+        "folder",
+        "folders",
+        "glob"
+    ],
+    "license": "MIT"
+}
