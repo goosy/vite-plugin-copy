@@ -1,11 +1,15 @@
 import pkg from './package.json';
+import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 
 const external = [
     'fs/promises',
     'fs',
+    'fast-glob',
     'util',
     'url',
+    'path',
+    'stream'
 ];
 export default { // main lib
     input: './src/index.js',
@@ -17,6 +21,7 @@ export default { // main lib
         format: 'cjs',
     }],
     plugins: [
+        commonjs(),
         resolve({
             preferBuiltins: true,
         }), 

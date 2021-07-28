@@ -1,6 +1,7 @@
 import { access, copyFile, mkdir, readdir, stat } from 'fs/promises';
 import { constants } from 'fs';
 import { join, basename, dirname } from 'path';
+import fg from 'fast-glob';
 
 async function prepare_dir(dir) {
     const parents = dirname(dir);
@@ -39,13 +40,31 @@ async function copyToDir(src, tarDir) {
 }
 
 export function copy(copyList, options = {}) {
-    const { hook = 'closeBundle' } = options
+    const { hook = 'buildEnd' } = options;
+    copyList = Array.isArray(copyList) && copyList.length
+        ? copyList
+        : [];
+
     return {
         name: 'vite-plugin-copy',
         apply: 'build',
-        [hook]: () => {
+        [hook]: async () => {console.log('hook emit')
             for (const { src, dest } of copyList) {
-                copyToDir(src, dest);
+                const matchedSrcs = await fg(src, {
+                    expandDirectories: false,
+                    onlyFiles: false,
+                });
+                if (matchedSrcs.length > 0) {
+                    for (const src of matchedSrcs) {
+                        if (Array.isArray(dest)) {
+                            for (const dest of tasks) {
+                                await copyToDir(src, dest);
+                            }
+                        } else {
+                            await copyToDir(src, dest);
+                        }
+                    }
+                }
             }
         }
     }
