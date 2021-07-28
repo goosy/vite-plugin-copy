@@ -1,6 +1,6 @@
 {
     "name": "vite-plugin-copy",
-    "version": "0.1.3",
+    "version": "0.1.5",
     "description": "Vitejs plguin: copy files and folders",
     "author": "goosy <goosy.jo@gmail.com>",
     "type": "module",
@@ -17,11 +17,14 @@
         "@rollup/plugin-commonjs": "^19.0.2",
         "@rollup/plugin-node-resolve": "^13.0.4",
         "fast-glob": "^3.2.7",
+        "rimraf": "^3.0.2",
         "vite": "^2.4.4"
     },
     "scripts": {
+        "clean": "rimraf dist",
         "build": "rollup -c",
-        "prepublish": "npm run build",
+        "postpublish": "npm run clean",
+        "prepublishOnly": "npm run clean && npm run build",
         "test": "mocha"
     },
     "keywords": [
