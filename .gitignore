@@ -65,6 +65,7 @@ typings/
 
 # configuration
 package-lock.json
+test/fixtures/
 
 # production
 dist/

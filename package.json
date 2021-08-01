@@ -1,6 +1,6 @@
 {
     "name": "vite-plugin-copy",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Vitejs plguin: copy files and folders",
     "author": "goosy <goosy.jo@gmail.com>",
     "type": "module",
@@ -13,12 +13,17 @@
     "engines": {
         "node": ">=14.8.0"
     },
+    "peerDependencies": {
+        "fast-glob": "^3.2.7"
+    },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^19.0.2",
         "@rollup/plugin-node-resolve": "^13.0.4",
-        "fast-glob": "^3.2.7",
+        "@vitejs/plugin-vue": "^1.2.3",
+        "mocha": "^9.0.3",
         "rimraf": "^3.0.2",
-        "vite": "^2.4.4"
+        "vite": "^2.4.4",
+        "vue": "^3.1.3"
     },
     "scripts": {
         "clean": "rimraf dist",

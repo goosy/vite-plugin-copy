@@ -46,9 +46,9 @@ export function copy(copyList, options = {}) {
         : [];
 
     return {
-        name: 'vite-plugin-copy',
+        name: 'copy',
         apply: 'build',
-        [hook]: async () => {console.log('hook emit')
+        [hook]: async () => {
             for (const { src, dest } of copyList) {
                 const matchedSrcs = await fg(src, {
                     expandDirectories: false,
